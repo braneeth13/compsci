@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import BreezySwing.IntegerField;
 import BreezySwing.GBFrame;
 
-public class FractionProgram extends GBFrame{
+public class FractionGUI extends GBFrame{
 		//fraction 1 input
 	    JLabel numerator1label      = addLabel ("Fraction 1 Numerator", 1,1,1,1);
 	    IntegerField num1field = addIntegerField (0,1,2,1,1);
@@ -20,43 +20,49 @@ public class FractionProgram extends GBFrame{
 	    
 	    JButton input                 = addButton ("Check Input",3,1,1,1);
 	    JButton multiply                = addButton ("Multiply",            3,2,1,1);
-	    //JButton reset = addButton ("Reset", 4,1,5,1 );
 	    
+	    Fraction fraction;
     // Use if/else statement to determine which button is clicked
 	    	    
 	    public void buttonClicked(JButton buttonObj){
-	        double fahrenheit, celsius;
 	        if (buttonObj == input){
-	            if (! degreesFahrenheitField.isValidNumber()) {
-	            	messageBox("Error: Bad number format in Fahrenheit field!");
+	            //separate if statements to check for valid int input, messages the field name if invalid
+	        	if (! num1field.isValidNumber() ) {
+	            	messageBox("Error: Bad number format in Numerator 1 Field");
 	            }
-	        	fahrenheit = degreesFahrenheitField.getNumber();
-	            celsius = (fahrenheit  - 32) * 5.0 / 9.0;
-	            degreesCelsiusField.setNumber (celsius);
-	        }
-	        else if (buttonObj == reset ) {
-	        	degreesCelsiusField.setNumber(0);
-	        	degreesFahrenheitField.setNumber(0);
-
-	        }
-	        else {
-	        	if (! degreesCelsiusField.isValidNumber()) {
-	            	messageBox("Error: Bad number format in Celsius field!");
+	        	
+	        	
+	        	if (! num2field.isValidNumber()) {
+	            	messageBox("Error: Bad number format in 	");
 	            }
-	            celsius = degreesCelsiusField.getNumber();
-	            fahrenheit = celsius * 9.0 / 5.0 + 32;
-	            degreesFahrenheitField.setNumber (fahrenheit);
+	            
+	            
+	            if (! denom1field.isValidNumber() || denom1field.getNumber() == 0) {
+	            	messageBox("Error: Bad number format in Denominator 1 Field");
+	            }
+	           
+	            
+	            if (! denom2field.isValidNumber() || denom2field.getNumber() == 0) {
+	            	messageBox("Error: Bad number format in Denominator 2 Field");
+	            }
+	            
+	            Fraction fraction = new Fraction(num1field.getNumber(), num2field.getNumber(), denom1field.getNumber(), denom2field.getNumber());
+		    	
+	            	        	 
+	            
 	        }
 	        
 	        
 	        
+	        
+	     	        
 	    }
 	    
 	   
 
 	    public static void main(String[] args){
 	    	
-	        JFrame frm = new FractionProgram();
+	        JFrame frm = new FractionGUI();
 	        frm.setTitle ("Fraction");
 	        frm.setSize (700, 200);
 	        frm.setVisible (true);
