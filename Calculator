@@ -1,8 +1,19 @@
-public class calculator {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+public class Fraction {
+	private int num1value;
+	private int num2value;
+	private int denom1value;
+	private int denom2value;
+	
+	public Fraction(int num1, int num2, int denom1, int denom2) {
+		num1 = num1value;
+		num2 = num2value;
+		denom1=denom1value;
+		denom2=denom2value;
+		
 	}
 
+	public int multiply() {
+		int numerator = num1value * num2value;
+		return numerator;
+	}
 }
