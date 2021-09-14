@@ -1,11 +1,10 @@
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
+import BreezySwing.*;
 
-import BreezySwing.IntegerField;
-import BreezySwing.GBFrame;
 
 public class FractionGUI extends GBFrame{
+	
+		JTextArea outputArea  = addTextArea ("", 4,4,2,5);
 		//fraction 1 input
 	    JLabel numerator1label      = addLabel ("Fraction 1 Numerator", 1,1,1,1);
 	    IntegerField num1field = addIntegerField (0,1,2,1,1);
@@ -18,36 +17,47 @@ public class FractionGUI extends GBFrame{
 	    JLabel denominator2label         = addLabel ("Fraction 2 Denominator",2,3,1,1);
 	    IntegerField denom2field    = addIntegerField (0,2,4,1,1);
 	    
-	    JButton input                 = addButton ("Check Input",3,1,1,1);
-	    JButton multiply                = addButton ("Multiply",            3,2,1,1);
+	    JButton input                 = addButton ("Input",3,1,2,1);
+	    
 	    
 	    Fraction fraction;
     // Use if/else statement to determine which button is clicked
 	    	    
 	    public void buttonClicked(JButton buttonObj){
-	        if (buttonObj == input){
+	    	
+	    	
+	    	
+	    	if (buttonObj == input){
 	            //separate if statements to check for valid int input, messages the field name if invalid
 	        	if (! num1field.isValidNumber() ) {
 	            	messageBox("Error: Bad number format in Numerator 1 Field");
+	            	
 	            }
 	        	
 	        	
 	        	if (! num2field.isValidNumber()) {
-	            	messageBox("Error: Bad number format in 	");
+	            	messageBox("Error: Bad number format in Numerator 2 Field	");
 	            }
 	            
 	            
 	            if (! denom1field.isValidNumber() || denom1field.getNumber() == 0) {
 	            	messageBox("Error: Bad number format in Denominator 1 Field");
+	            	System.exit(1);
 	            }
 	           
 	            
 	            if (! denom2field.isValidNumber() || denom2field.getNumber() == 0) {
 	            	messageBox("Error: Bad number format in Denominator 2 Field");
+	            	System.exit(0);
 	            }
 	            
+	            
+	            //System.out.println(num1field.getNumber() + " " + num2field.getNumber()  + " " + denom1field.getNumber()  + " " + denom2field.getNumber());
 	            Fraction fraction = new Fraction(num1field.getNumber(), num2field.getNumber(), denom1field.getNumber(), denom2field.getNumber());
 		    	
+	            
+	            
+	            	
 	            	        	 
 	            
 	        }
