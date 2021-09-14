@@ -3,17 +3,47 @@ public class Fraction {
 	private int num2value;
 	private int denom1value;
 	private int denom2value;
-	
+	private int numeratorValue;
+	private int denominatorValue;
+	;
 	public Fraction(int num1, int num2, int denom1, int denom2) {
-		num1 = num1value;
-		num2 = num2value;
-		denom1=denom1value;
-		denom2=denom2value;
+		num1value = num1;
+		num2value = num2;
+		denom1value = denom1;
+		denom2value = denom2;
 		
 	}
 
-	public int multiply() {
-		int numerator = num1value * num2value;
-		return numerator;
+	public int numMultiply() {
+		numeratorValue = num1value * num2value;
+		return numeratorValue;
+	}
+	
+	public int denomMultiply() {
+		denominatorValue = denom1value*denom2value;
+		return denominatorValue;
+	}
+	
+	
+	private int findGCF() {
+		int gcf = 1;
+		
+		if (numeratorValue > denominatorValue) {
+			gcf = numeratorValue;
+	    }
+		return gcf;
+	}
+	
+	private void reduce() {
+		
 	}
 }
+
+/*if(fraction.numMultiply() != 0 && fraction.denomMultiply() != 1) {
+	outputArea.setText (String.valueOf(fraction.numMultiply()) + "/" + String.valueOf(fraction.denomMultiply()));
+} else if (fraction.numMultiply() == 0) {
+	outputArea.setText(String.valueOf(0));
+}else if (fraction.denomMultiply() == 1) {
+	outputArea.setText(String.valueOf(fraction.numMultiply()));
+}
+*/
