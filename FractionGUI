@@ -66,11 +66,15 @@ public class FractionGUI extends GBFrame{
 	            
 	            
 	            
-	            if(fraction.numMultiply() != 0) {
+	            if(fraction.numMultiply() == fraction.denomMultiply()){
+	            	outputArea.setText(String.valueOf(1));
+	            } else if (fraction.numMultiply() != 0 && fraction.denomMultiply() != 1  ) {
 	            	outputArea.setText (String.valueOf(fraction.numMultiply()) + "/" + String.valueOf(fraction.denomMultiply()));
 	            } else if (fraction.numMultiply() == 0) {
 	            	outputArea.setText(String.valueOf(0));
-	            }       	 
+	            } else if (fraction.denomMultiply() == 1) {
+	            	outputArea.setText(String.valueOf(fraction.numMultiply()));
+	            }   	 
 	            
 	        }
 	        
