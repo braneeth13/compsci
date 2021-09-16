@@ -60,7 +60,7 @@ public class FractionGUI extends GBFrame{
 	            }
 	            
 	            
-	            
+	            System.out.println(num1field.getNumber());
 	            Fraction fraction = new Fraction(num1field.getNumber(), num2field.getNumber(), denom1field.getNumber(), denom2field.getNumber());
 	            //ystem.out.println(String.valueOf(fraction.findGCF()));
 	            
@@ -68,15 +68,18 @@ public class FractionGUI extends GBFrame{
 	            
 	            if(fraction.numMultiply() == fraction.denomMultiply()){
 	            	outputArea.setText(String.valueOf(1));
-	            } else if (fraction.numMultiply() != 0 && fraction.denomMultiply() != 1  ) {
+	            } else if (fraction.numMultiply() != 0 && fraction.denomMultiply() != 1) {
 	            	outputArea.setText (String.valueOf(fraction.numMultiply()) + "/" + String.valueOf(fraction.denomMultiply()));
 	            } else if (fraction.numMultiply() == 0) {
 	            	outputArea.setText(String.valueOf(0));
 	            } else if (fraction.denomMultiply() == 1) {
 	            	outputArea.setText(String.valueOf(fraction.numMultiply()));
-	            }   	 
+	            } else if(fraction.numMultiply()/fraction.denomMultiply() == -1 ) {
+	            	outputArea.setText(String.valueOf(-1));
+	            }
+	         }
 	            
-	        }
+	        
 	        
 	        
 	        
