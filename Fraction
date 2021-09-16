@@ -27,6 +27,8 @@ public class Fraction {
 			gcf = denominatorValue;
 	    } else if(denominatorValue > numeratorValue) {
 	    	gcf = numeratorValue;
+		}else {
+			gcf = numeratorValue;
 		}
 	
 		Boolean found = false ;
@@ -53,6 +55,8 @@ public class Fraction {
 			gcf = denominatorValue;
 	    } else if(denominatorValue > numeratorValue) {
 	    	gcf = numeratorValue;
+		} else {
+			gcf=denominatorValue;
 		}
 	
 		Boolean found = false ;
@@ -68,6 +72,8 @@ public class Fraction {
 		
 		return denominatorValue/gcf;
 	}
+	
+	
 	
 	
 	
