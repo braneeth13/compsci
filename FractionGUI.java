@@ -33,28 +33,30 @@ public class FractionGUI extends GBFrame{
 	    	      
 	    	      
 	            //separate if statements to check for valid int input, messages the field name if invalid
-	        	if (! num1field.isValidNumber() ) {
+	        	if (! num1field.isValidNumber() || num1field.getNumber() < 0 ) {
 	            	messageBox("Error: Bad number format in Numerator 1 Field");
 	            	
+	            	
 	            }
 	        	
 	        	
-	        	if (! num2field.isValidNumber()) {
+	        	if (! num2field.isValidNumber() || num2field.getNumber() < 0) {
 	            	messageBox("Error: Bad number format in Numerator 2 Field	");
 	            	
+	            	
 	            }
 	            
 	            
-	            if (! denom1field.isValidNumber() || denom1field.getNumber() == 0) {
+	            if (! denom1field.isValidNumber() || denom1field.getNumber() == 0 || denom1field.getNumber() < 0) {
 	            	messageBox("Error: Bad number format in Denominator 1 Field");
-	            	
 	            	
 	            	
 	            }
 	           
 	            
-	            if (! denom2field.isValidNumber() || denom2field.getNumber() == 0) {
+	            if (! denom2field.isValidNumber() || denom2field.getNumber() == 0 || denom2field.getNumber() < 0) {
 	            	messageBox("Error: Bad number format in Denominator 2 Field");
+	            	
 	            	
 	            	
 	            }
