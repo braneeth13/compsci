@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+
 import javax.swing.*;
 import BreezySwing.*;
 
@@ -6,9 +8,11 @@ public class MagicSquareGUI extends GBFrame{
 	
 	 	
 	    IntegerField sizeField = addIntegerField (0,1,2,1,1);
-	    JButton inputValue = addButton ("Input Values",4,1,2,1);
 	   
-	    // dropdown options
+	   
+	    JButton inputValues = addButton ("Input Values",4,1,2,1);
+	   
+	    GBPanel matrix = addPanel(3,2,1,1);
 	    JLabel textLabel      = addLabel ("Size", 1,1,1,1);
 	    JMenuItem item3 = addMenuItem ("Dimensions", "3 x 3");
 	    JMenuItem item4 = addMenuItem ("Dimensions", "4 x 4");
@@ -17,9 +21,29 @@ public class MagicSquareGUI extends GBFrame{
 	    JMenuItem item7 = addMenuItem ("Dimensions", "7 x 7");
 	    JMenuItem item8 = addMenuItem ("Dimensions", "8 x 8");
 	    
+	    int size = 0;
+	    
 	     
+	    public void buttonClicked(JButton buttonObj) {
+	    	if (buttonObj == inputValues) {
+	    		if (size == 0) {
+	    			messageBox("Error: Please Select a size from the drop down titled 'Dimensions' ");
+	    		} else {
+	    			for (int i=0; i<size; i++) {
+	    				for (int j=0; i<size; j++) {
+	    					
+	    				}
+	    		
+	    			
+	    			}
+	    		}
+	    	}
+	    }
+	    
+	    
+	    
 	    public void menuItemSelected(JMenuItem menuItem){
-	    	int size = 0;
+	    	
 	        if (menuItem == item3) {
 	            size = 3;
 	        }
@@ -40,12 +64,7 @@ public class MagicSquareGUI extends GBFrame{
 	        	
 	        }
 	        
-	            
-	        for(int i = 0; i < size; i++) {
-	        	for(int j = 0; j<size; j++) {
-	        		
-	        	}
-	        }
+	        
 	        
 	        
 	        
