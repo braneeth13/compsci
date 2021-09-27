@@ -10,7 +10,7 @@ public class MagicSquareGUI extends GBFrame{
 	    IntegerField sizeField = addIntegerField (0,1,2,1,1);
 	   
 	   
-	    JButton inputValues = addButton ("Input Values",4,1,2,1);
+	    JButton inputSize = addButton ("Input Size",4,1,2,1);
 	   
 	    GBPanel matrix = addPanel(3,2,1,1);
 	    JLabel textLabel      = addLabel ("Size", 1,1,1,1);
@@ -20,26 +20,26 @@ public class MagicSquareGUI extends GBFrame{
 	    JMenuItem item6 = addMenuItem ("Dimensions", "6 x 6");
 	    JMenuItem item7 = addMenuItem ("Dimensions", "7 x 7");
 	    JMenuItem item8 = addMenuItem ("Dimensions", "8 x 8");
+	    GBPanel gridPanel = addPanel(new GBPanel(), 1, 1, 1, 1);
 	    
 	    int size = 0;
-	    
+	    IntegerField[][] grid = new IntegerField[8][8];
+	    int [][] intGrid = new int [8][8];
 	     
-	    public void buttonClicked(JButton buttonObj) {
-	    	if (buttonObj == inputValues) {
-	    		if (size == 0) {
-	    			messageBox("Error: Please Select a size from the drop down titled 'Dimensions' ");
-	    		} else {
-	    			for (int i=0; i<size; i++) {
-	    				for (int j=0; i<size; j++) {
-	    					
-	    				}
-	    		
-	    			
-	    			}
-	    		}
-	    	}
+	    public void buttonClicked(JButton buttonObj){ //button click "sensor"
+	        gridPanel.removeAll();
+	        for (int x = 0; x < size; x++) {
+	            for (int y = 0; y < size; y++) {
+	                grid[x-1][y-1] = gridPanel.addIntegerField(0, x + 1, y + 1, 1, 1);
+	            }
+	        }
+	        
+	        
+	        
+	        //refresh panel
+	        gridPanel.setVisible(false);
+	        gridPanel.setVisible(true);
 	    }
-	    
 	    
 	    
 	    public void menuItemSelected(JMenuItem menuItem){
