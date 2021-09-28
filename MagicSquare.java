@@ -1,11 +1,13 @@
+import java.util.Arrays;
+
 public class MagicSquare {
-	private int size;
+	public boolean validSquare = false;
+	private int [][] values;
 	
-	public MagicSquare (int size1) {
-		size = size1;
+	public MagicSquare (int [][] values) {
+		values = values;
+		System.out.println(Arrays.deepToString(values));
 	}
-	
-	
 	
 	
 }
