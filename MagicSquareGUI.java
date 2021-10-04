@@ -15,7 +15,7 @@ public class MagicSquareGUI extends GBFrame{
 	    JButton inputValues = addButton ("Validate", 4 ,1, 2, 1 );
 	   
 	    GBPanel matrix = addPanel(3,2,1,1);
-	    JLabel textLabel      = addLabel ("Size", 1,1,1,1);
+	    //JLabel textLabel      = addLabel ("Size", 1,1,1,1);
 	    JMenuItem item2 = addMenuItem ("Dimensions", "2 x 2");
 	    JMenuItem item3 = addMenuItem ("Dimensions", "3 x 3");
 	    JMenuItem item4 = addMenuItem ("Dimensions", "4 x 4");
@@ -30,11 +30,20 @@ public class MagicSquareGUI extends GBFrame{
 	    int [][] intGrid = new int [8][8];
 	     
 	    public void buttonClicked(JButton buttonObj){ //button click "sensor"
-	        if (buttonObj == inputValues) {
-	        	int [][] values = getValues(grid);
-	        	System.out.println(Arrays.deepToString(values));
-	        	MagicSquare square = new MagicSquare(values);
-	        }
+	    	if (buttonObj == inputValues) {
+	    		System.out.println(size);
+
+	        	if (size == 0) {
+	        		messageBox("Please select dimensions for the magic square from the dropdown");
+	        		
+	    		} else {
+	    			int [][] values = getValues(grid);
+	        		//System.out.println(Arrays.deepToString(values));
+	        		MagicSquare square = new MagicSquare(values);}
+	        
+	        	
+	    	}
+	    	
 	    }
 	    
 	    public void generateMagicSquare(int size) {
@@ -53,6 +62,7 @@ public class MagicSquareGUI extends GBFrame{
 	    
 	    
 	    public void menuItemSelected(JMenuItem menuItem){
+	    		
 	    	if (menuItem == item2) {
 	        	size = 2;
 	    		generateMagicSquare(2);
@@ -95,12 +105,16 @@ public class MagicSquareGUI extends GBFrame{
 	    	if (fields == null) {
 	    		return null;
 	    	} 
-	    	System.out.println(size);
+	    	
 	    	int [][] values = new int[size][size];
 	    	for (int i = 1;i<=size;i++) {
 	    		
 	    		for (int j=1; j<=size; j++) {
-	    			values [i-1][j-1] = fields[i-1][j-1].getNumber();
+	    			if (fields[i-1][j-1].isValidNumber() && fields[i-1][j-1].getNumber() >= 0) {
+	    				values [i-1][j-1] = fields[i-1][j-1].getNumber();
+	    			} else {
+	    				messageBox("There is an invalid value in row " + i + " and column " + j);
+	    			}
 	    		}
 	    	}
 	    	return values;
