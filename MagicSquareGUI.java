@@ -11,19 +11,20 @@ public class MagicSquareGUI extends GBFrame{
 	    //IntegerField sizeField = addIntegerField (0,1,2,1,1);
 	   
 	   
-	   
+	    JTextArea outputArea  = addTextArea ("", 4,4,4,4);
 	    JButton inputValues = addButton ("Validate", 4 ,1, 2, 1 );
 	   
 	    GBPanel matrix = addPanel(3,2,1,1);
 	    //JLabel textLabel      = addLabel ("Size", 1,1,1,1);
-	    JMenuItem item2 = addMenuItem ("Dimensions", "2 x 2");
-	    JMenuItem item3 = addMenuItem ("Dimensions", "3 x 3");
-	    JMenuItem item4 = addMenuItem ("Dimensions", "4 x 4");
-	    JMenuItem item5 = addMenuItem ("Dimensions", "5 x 5");
-	    JMenuItem item6 = addMenuItem ("Dimensions", "6 x 6");
-	    JMenuItem item7 = addMenuItem ("Dimensions", "7 x 7");
-	    JMenuItem item8 = addMenuItem ("Dimensions", "8 x 8");
+	    JMenuItem item2 = addMenuItem ("Click here to select Dimensions", "2 x 2");
+	    JMenuItem item3 = addMenuItem ("Click here to select Dimensions", "3 x 3");
+	    JMenuItem item4 = addMenuItem ("Click here to select Dimensions", "4 x 4");
+	    JMenuItem item5 = addMenuItem ("Click here to select Dimensions", "5 x 5");
+	    JMenuItem item6 = addMenuItem ("Click here to select Dimensions", "6 x 6");
+	    JMenuItem item7 = addMenuItem ("Click here to select Dimensions", "7 x 7");
+	    JMenuItem item8 = addMenuItem ("Click here to select Dimensions", "8 x 8");
 	    GBPanel gridPanel = addPanel(new GBPanel(), 1, 1, 1, 1);
+	    MagicSquare square;
 	    
 	    int size = 0;
 	    IntegerField[][] grid = new IntegerField[8][8];
@@ -31,7 +32,7 @@ public class MagicSquareGUI extends GBFrame{
 	     
 	    public void buttonClicked(JButton buttonObj){ //button click "sensor"
 	    	if (buttonObj == inputValues) {
-	    		System.out.println(size);
+	    		
 
 	        	if (size == 0) {
 	        		messageBox("Please select dimensions for the magic square from the dropdown");
@@ -39,7 +40,13 @@ public class MagicSquareGUI extends GBFrame{
 	    		} else {
 	    			int [][] values = getValues(grid);
 	        		//System.out.println(Arrays.deepToString(values));
-	        		MagicSquare square = new MagicSquare(values);}
+	    			MagicSquare square = new MagicSquare (values);
+	    			if (square.isMagicSquare() == false) {
+	    				outputArea.setText("The entered values DO NOT make a magic square");
+	    			} else {
+	    				outputArea.setText("The entered values DO make a magic square with a magic square constant of " + String.valueOf(square.squareNumber()));
+	    			}
+	    		}
 	        
 	        	
 	    	}
@@ -124,7 +131,7 @@ public class MagicSquareGUI extends GBFrame{
 	    public static void main(String[] args){
 	    	
 	        JFrame frm = new MagicSquareGUI();
-	        frm.setTitle ("Fraction");
+	        frm.setTitle ("Magic Square");
 	        frm.setSize (700, 200);
 	        frm.setVisible (true);
 	   }
