@@ -2,48 +2,55 @@ import java.util.Arrays;
 
 public class MagicSquare {
 	public boolean validSquare = false;
-	public int [][] values;
+	private int [][] values;
 	
-	public MagicSquare (int [][] values) {
-		values = values;
+	public MagicSquare (int [][] array) {
+		values = array;
 		System.out.println(Arrays.deepToString(values));
 	}
 	
 	public boolean isMagicSquare() {
-		int N = values.length;
-		System.out.print("size is" + N);
+		int length = values.length;
 		
-		// sumd1 and sumd2 are the sum of the two diagonals
-        int sumd1 = 0,sumd2=0;
-        for (int i = 0; i < N; i++)
-        {
-            // (i, i) is the diagonal from top-left -> bottom-right
-               // (i, N - i - 1) is the diagonal from top-right -> bottom-left
-            sumd1 += values[i][i];
-               sumd2 += values[i][N-1-i];
+		// Sum of the diagonals
+        int diag1 = 0,diag2=0;
+        for (int i = 0; i < length; i++){
+            // i, i is top left to bottom right
+            // i, length - 1 - i top right to bottom left
+        	diag1 += values[i][i];
+        	diag2 += values[i][length-1-i];
         }
-    // if the two diagonal sums are unequal then it is not a magic square
-        if(sumd1!=sumd2)
-            return false;
+        // Check if sum of diagonals is equal
+        if(diag1!=diag2) {
+        	return false;
+        }
+            
  
-        // calculating sums of Rows and columns and checking if they are equal to each other,
-        // as well as equal to diagonal sum or not
-        for (int i = 0; i < N; i++) {
- 
+        // Calculate sum of rows, columns + check whether they are equal to diagonals
+        for (int i = 0; i < length; i++) {
             int rowSum = 0, colSum = 0;
-            for (int j = 0; j < N; j++)
-            {
+            for (int j = 0; j < length; j++) {
                 rowSum += values[i][j];
                 colSum += values[j][i];
             }
-            if (rowSum != colSum || colSum != sumd1)
+            if (rowSum != colSum || colSum != diag1) {
                 return false;
+            }
         }
  
  
         return true;
     }
+	
+	public int squareNumber() {
+		int sum = 0;
+		for (int i = 0; i < values.length; i++){
+            // i, i is top left to bottom right
+            // i, length - 1 - i top right to bottom left
+        	sum += values[i][i];
+        }
+		return sum;
+	}
 		
 }
 	
-
