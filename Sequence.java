@@ -1,5 +1,4 @@
-
-public class Sequence {
+public class Sequence {	
 	int longest = 0;
     int temporary = 1; //temporary length
     int repeat = 1; //tracks number of longest sequences
@@ -33,8 +32,12 @@ public class Sequence {
 
 	//find the longest sequence length
 	public int getSequenceLength(int [] array, int count) {
-        for (int i = 1; i <= count; i++) {
-            if (array [i] >= array [i-1]) { //reg case --> if the index is greater than the one before, increase length by 1
+      
+       
+		for (int i = 1; i <= count; i++) {
+            
+        	
+        	if (array [i] >= array [i-1] || array [i] == array [i-1] ) { //reg case --> if the index is greater than the one before, increase length by 1
                 temporary++;
             }
             else {
@@ -50,7 +53,8 @@ public class Sequence {
             }
             
         }
-        return longest;
+       
+		return longest;
     }
     
     
