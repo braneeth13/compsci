@@ -28,6 +28,7 @@ public class ParserGUI extends GBFrame{
 	    		if (errorCheck(phrase)) {
 	    		
 	    			Parser parser = new Parser(phrase);
+	    			output.append(" " + parser.split());
 	    			
 	    			
 	    			
