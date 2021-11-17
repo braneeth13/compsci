@@ -24,27 +24,36 @@ public class ParserGUI extends GBFrame{
 	 
 	    public void buttonClicked(JButton buttonObj){ //button click "sensor"
 	    	if (buttonObj == input) {
-	    		phrase = field.getText();
-	    		if (errorCheck(phrase)) {
+	    		 try{
+	    			 phrase = field.getText();
+		    		 
+	 	    		if(errorCheck(phrase)) {
+	 	    		
+	 	    			Parser parser = new Parser(phrase);
+	 	    			output.append(" " + parser.split());
+	 	    		}  else {
+		    			messageBox(error);
+		    		}
+	 	    		
+	    		 } 
+	    		 
+	    		 catch (NumberFormatException e) {
+	    			 messageBox("Invalid input");
+	    		 }
+	    			
+	    			
+	    			
+	    			
+	    			
+	    			
+	    			
+	    			
+	    			
+	    			
+	    			
+	    			
+	    			
 	    		
-	    			Parser parser = new Parser(phrase);
-	    			output.append(" " + parser.split());
-	    			
-	    			
-	    			
-	    			
-	    			
-	    			
-	    			
-	    			
-	    			
-	    			
-	    			
-	    			
-	    			
-	    		} else {
-	    			messageBox(error);
-	    		}
 	    		
 	    		
 	    	
@@ -64,18 +73,23 @@ public class ParserGUI extends GBFrame{
 	    		return false;
 	    	}
 	    	int counter = 0;
+	    	
+	    	
 	    	for(int i = 0;i<phrase.length(); i++) {
 	    		if(phrase.charAt(i) == '+' || phrase.charAt(i) == '-' || phrase.charAt(i) == '*' || phrase.charAt(i) == '/'){
 	    			counter++;
 	    		}
+	    		
 	    	}
+	    	
+	    	
 	    	if(counter==0) {
 	    		error = "No operation was inputted";
 	    		return false;
 	    	} else if(counter >1) {
 	    		error = "You have more than one operation";
 	    		return false;
-	    	}
+	    	} 
 	    	
 	    	return true;
 	    	
