@@ -24,7 +24,7 @@ public class ParserGUI extends GBFrame{
 	    		//try main code 
 	    		try{
 	    			 phrase = field.getText();
-		    		 
+		    		 phrase=phrase.trim();
 	 	    		if(errorCheck(phrase)) {
 	 	    		
 	 	    			Parser parser = new Parser(phrase);
@@ -38,12 +38,14 @@ public class ParserGUI extends GBFrame{
 	    		 
 	    		// one of two possible errors is num format 
 	    		catch (NumberFormatException e) {
-	    			 messageBox("Invalid input (Cannot enter letters/symbols/multiple operations/decimals", 600, 100);
+	    			 messageBox("Invalid inputs", 600, 100);
 	    			 
 	    		//other possible error is dividing by 0
 	    		}catch(ArithmeticException e) {
 	    			 messageBox("You cannot divide by 0");
-	    		 }
+	    		} catch(Exception e) {
+	    			messageBox("Error - Nothing was inputted");
+	    		}
 	    			
 	    		
 	    	}
@@ -55,6 +57,10 @@ public class ParserGUI extends GBFrame{
 	    }
 	    //check if it starts with equals, everything else can be handled by try catch
 	    public boolean errorCheck(String check) {
+	    	boolean noEntry = false;
+	    	
+	    	
+	    	
 	    	if(phrase.charAt(0) != '=') {
 	    		error = "All expressions need to start with '='";
 	    		return false;
